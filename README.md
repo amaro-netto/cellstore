@@ -10,7 +10,13 @@
 
 ### 📝 **Descrição do Projeto**
 
-Você é responsável por modelar um sistema que trabalha com celulares. Para isso, foi solicitado que você faça uma abstração de um celular e disponibilize maneiras de diferentes marcas e modelos terem seu próprio comportamento, possibilitando um maior reuso de código e usando a orientação a objetos.
+Este projeto é um simulador interativo de smartphones desenvolvido em **C#** e **.NET**. O objetivo principal foi modelar, de forma prática e funcional, os pilares da Programação Orientada a Objetos (POO): **Abstração, Herança e Polimorfismo**.
+
+Através de uma interface de console, o sistema simula dois aparelhos de marcas distintas (Nokia e iPhone) que compartilham comportamentos básicos (Ligar, Receber Ligação) herdados de uma classe abstrata (`Smartphone`).
+
+O ponto central da solução é o **Polimorfismo**, onde a ação de `InstalarAplicativo` se comporta de maneira única para cada marca (simulando a Ovi Store e a App Store). Adicionalmente, o sistema implementa um controle de memória em tempo real que diminui com a instalação de aplicativos, fornecendo *feedback* detalhado ao usuário em GB e MB.
+
+O resultado é um sistema robusto que demonstra o **reuso de código** e a capacidade de modelar entidades complexas com diferentes comportamentos a partir de um único molde.
 
 #### ⚙️ **Tecnologias Utilizadas**
 * **C#** (Linguagem de Programação)
@@ -69,8 +75,9 @@ O programa inicia um loop de menu, permitindo ao usuário escolher entre as marc
 
 ### 💻 **Como Usar a Aplicação**
 1.  Certifique-se de ter o **SDK do .NET 9.0** ou superior instalado.
-2.  Navegue até o diretório `DesafioPOO` no terminal.
+2.  Navegue até o diretório `cellstore` no terminal.
 3.  Execute o comando para compilar e rodar o projeto:
+   
     ```bash
     dotnet run
     ```
