@@ -4,6 +4,7 @@
 
 ![C#](https://img.shields.io/badge/C%23--9b248e?labelColor=512BD4&style=for-the-badge&logo=csharp&logoColor=white)
 ![.NET: 9.0](https://img.shields.io/badge/.NET-9.0-9b248e?labelColor=512BD4&style=for-the-badge&logo=.net&logoColor=white)
+![Status: Concluído](https://img.shields.io/badge/Status-Concluído-success?style=for-the-badge)
 
 ##
 
@@ -35,24 +36,36 @@ Você é responsável por modelar um sistema que trabalha com celulares. Para is
 #### ** Fluxo de Funcionamento**
 ```mermaid
 graph TD
-    A[Inicio do Programa] --> B{Criar Instancias};
-    B --> C[Metodos Comuns: Ligar, ReceberLigacao];
-    C --> D{Chamar InstalarAplicativo};
-    D --> E[Nokia: Override];
-    D --> F[iPhone: Override];
-    E --> G[Fim];
-    F --> G;
+    A[Início do Sistema: dotnet run] --> B{Cria Instâncias Nokia e iPhone};
+    B --> C(Loop Principal: Escolha o Celular);
+    C --> D{Escolha uma Ação};
+    D -- Ligar / Receber --> E[Chama métodos herdados de Smartphone];
+    D -- Ver Detalhes --> F[Chama ExibirDetalhes, atualizando memória];
+    D -- Instalar App --> G{Chama InstalarAplicativo - Polimorfismo};
+    G --> H[Smartphone: Gerencia Memória MB/GB];
+    H -- Sucesso --> I[Nokia/iPhone: Exibe mensagem de sucesso específica];
+    H -- Falha --> J[Smartphone: Exibe erro de memória insuficiente];
+    D -- Sair --> Z[Fim do Programa];
+    E --> C;
+    F --> C;
+    I --> C;
+    J --> C;
 ```
 ---
 
 ### 🚀 **Funcionalidades e Demonstração**
 #### **Principais Funcionalidades**
-1.  **Abstração do Celular**: Classe base **Smartphone** que define as características e ações básicas (número, ligar, receber ligação).
-2.  **Herança**: Classes **Nokia** e **Iphone** herdando o comportamento da classe Smartphone.
-3.  **Polimorfismo**: Sobrescrita do método `InstalarAplicativo` em cada marca, permitindo que a ação seja realizada de maneiras diferentes (regra 3).
+
+**Abstração do Celular:** Classe base Smartphone que define as características (Modelo, IMEI, Memoria) e ações básicas (Ligar, Receber Ligação).
+
+**Herança e Reuso:** Classes Nokia e Iphone utilizam a lógica centralizada de gerenciamento de memória da classe pai.
+
+**Polimorfismo:** O método InstalarAplicativo é sobrescrito para simular o processo de instalação de cada marca (Ovi Store vs. App Store).
+
+**Simulação de Memória:** Controle interno da memória em MB, com exibição padronizada em GB (MB), que reflete o uso após cada instalação.
 
 #### **Como funciona**
-O programa cria objetos de diferentes tipos de celulares (Nokia e iPhone) a partir da mesma classe base `Smartphone` e testa suas funcionalidades comuns (Ligar, Receber Ligação) e suas funcionalidades específicas (Instalar Aplicativo).
+O programa inicia um loop de menu, permitindo ao usuário escolher entre as marcas e ações. As chamadas de métodos são dinâmicas, garantindo que o comportamento polimórfico (instalação) e o estado do objeto (memória livre) sejam atualizados e refletidos em tempo real.
 
 ---
 
