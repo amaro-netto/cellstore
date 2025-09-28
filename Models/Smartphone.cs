@@ -4,24 +4,27 @@ namespace DesafioPOO.Models
     {
         public string Numero { get; set; }
         public string Modelo { get; set; }
-        public string IMEI { get; set; }
-        public int Memoria { get; set; }
         
-        // Memória livre para simular uso de apps
-        private int _memoriaLivre; // Campo privado para controle interno
+        // A propriedade Memoria (o total) permanece em GB (para o usuário ver a especificação).
+        public int Memoria { get; set; } 
+        public string IMEI { get; set; }
+        
+        // Campo privado que armazena a memória livre, mas agora será em Megabytes (MB)
+        private int _memoriaLivreMB;
 
-        public Smartphone(string numero, string modelo, string imei, int memoria)
+        public Smartphone(string numero, string modelo, string imei, int memoriaGB)
         {
             Numero = numero;
             Modelo = modelo;
             IMEI = imei;
-            Memoria = memoria;
-            _memoriaLivre = memoria; // Inicialmente, a memória livre é igual à total
+            Memoria = memoriaGB;
+            
+            // CONVERSÃO: Convertemos a memória total (em GB) para Megabytes para o cálculo interno.
+            _memoriaLivreMB = memoriaGB * 1024; // 1GB = 1024MB
         }
 
         public void Ligar()
         {
-            // Agora usamos a propriedade Numero para um retorno mais detalhado
             Console.WriteLine($"Ligando o {Modelo}... Número: {Numero}");
         }
 
@@ -30,22 +33,26 @@ namespace DesafioPOO.Models
             Console.WriteLine($"Recebendo ligação no {Modelo}...");
         }
 
-        // Método abstrato permanece, mas a lógica de verificação de memória será aplicada aqui,
-        // mas a mensagem final será polimórfica (implementada nas classes filhas).
         public abstract void InstalarAplicativo(string nomeApp);
         
-        // Novo método para verificar e gerenciar o uso da memória
-        protected bool GerenciarMemoria(int tamanhoApp)
+        protected bool GerenciarMemoria(int tamanhoAppMB)
         {
-            if (tamanhoApp <= _memoriaLivre)
+            if (tamanhoAppMB <= _memoriaLivreMB)
             {
-                _memoriaLivre -= tamanhoApp;
-                Console.WriteLine($"  -> Memória utilizada: {tamanhoApp}MB. Memória restante: {_memoriaLivre}MB.");
+                _memoriaLivreMB -= tamanhoAppMB;
+                // Saída de dados melhorada para mostrar a memória restante em MB e GB para clareza.
+                double memoriaRestanteGB = (double)_memoriaLivreMB / 1024;
+
+                Console.WriteLine($"  -> Memória utilizada: {tamanhoAppMB}MB.");
+                Console.WriteLine($"  -> Memória restante: {_memoriaLivreMB}MB ({memoriaRestanteGB:F2}GB).");
                 return true;
             }
             else
             {
-                Console.WriteLine($"  -> ERRO: Sem espaço suficiente! Livre: {_memoriaLivre}MB, Requerido: {tamanhoApp}MB.");
+                // Mostramos a memória livre também em GB para o usuário ter uma ideia melhor.
+                double memoriaLivreGB = (double)_memoriaLivreMB / 1024;
+                Console.WriteLine($"  -> ERRO: Sem espaço suficiente para instalar!");
+                Console.WriteLine($"     Livre: {_memoriaLivreMB}MB ({memoriaLivreGB:F2}GB), Requerido: {tamanhoAppMB}MB.");
                 return false;
             }
         }
