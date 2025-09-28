@@ -1,19 +1,25 @@
 namespace DesafioPOO.Models
 {
-    // TODO: Herdar da classe "Smartphone"
-    public class Iphone : Smartphone // O Iphone herda de Smartphone
+    public class Iphone : Smartphone 
     {
-        // Construtor: Passa os parâmetros para o construtor da classe base (Smartphone)
         public Iphone(string numero, string modelo, string imei, int memoria) : base(numero, modelo, imei, memoria)
         {
-            
+            // Construtor já faz a atribuição na classe base
         }
         
-        // TODO: Sobrescrever o método "InstalarAplicativo"
-        // Polimorfismo: Implementação específica do iPhone para a instalação de apps.
         public override void InstalarAplicativo(string nomeApp)
         {
-            Console.WriteLine($"Instalando o aplicativo '{nomeApp}' na App Store do iPhone...");
+            // Simula um tamanho aleatório para o aplicativo (entre 50MB e 100MB, geralmente apps de iPhone são maiores)
+            int tamanhoApp = new Random().Next(50, 101);
+
+            Console.WriteLine($"Tentando instalar o aplicativo '{nomeApp}' ({tamanhoApp}MB) via App Store no iPhone...");
+
+            // Chama a lógica de memória da classe base
+            if (GerenciarMemoria(tamanhoApp))
+            {
+                Console.WriteLine($"** {nomeApp} instalado com sucesso no {Modelo}! **");
+            }
+            // A mensagem de erro já é impressa pelo método GerenciarMemoria
         }
     }
 }

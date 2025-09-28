@@ -1,18 +1,25 @@
 namespace DesafioPOO.Models
 {
-    // A classe Nokia herda todas as propriedades e métodos da classe Smartphone.
     public class Nokia : Smartphone
     {
-        // Construtor: Chamamos o construtor da classe base (Smartphone) usando 'base'
         public Nokia(string numero, string modelo, string imei, int memoria) : base(numero, modelo, imei, memoria)
         {
-            
+            // Construtor já faz a atribuição na classe base
         }
         
-        // Polimorfismo: Sobrescrevemos o método abstrato e damos a ele o comportamento do Nokia.
         public override void InstalarAplicativo(string nomeApp)
         {
-            Console.WriteLine($"Instalando o aplicativo '{nomeApp}' no Nokia...");
+            // Simula um tamanho aleatório para o aplicativo (entre 10MB e 50MB)
+            int tamanhoApp = new Random().Next(10, 51); 
+
+            Console.WriteLine($"Tentando instalar o aplicativo '{nomeApp}' ({tamanhoApp}MB) via Ovi Store no Nokia...");
+            
+            // Chama a lógica de memória da classe base
+            if (GerenciarMemoria(tamanhoApp))
+            {
+                Console.WriteLine($"** {nomeApp} instalado com sucesso no {Modelo}! **");
+            }
+            // A mensagem de erro já é impressa pelo método GerenciarMemoria
         }
     }
 }
