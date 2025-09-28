@@ -1,8 +1,15 @@
 graph TD
-    A[Inicio do Programa] --> B{Criar Instancias};
-    B --> C[Metodos Comuns: Ligar, ReceberLigacao];
-    C --> D{Chamar InstalarAplicativo};
-    D --> E[Nokia: Override];
-    D --> F[iPhone: Override];
-    E --> G[Fim];
-    F --> G;
+    A[Início do Sistema: dotnet run] --> B{Cria Instâncias Nokia e iPhone};
+    B --> C(Loop Principal: Escolha o Celular);
+    C --> D{Escolha uma Ação};
+    D -- Ligar / Receber --> E[Chama métodos herdados de Smartphone];
+    D -- Ver Detalhes --> F[Chama ExibirDetalhes, atualizando memória];
+    D -- Instalar App --> G{Chama InstalarAplicativo - Polimorfismo};
+    G --> H[Smartphone: Gerencia Memória MB/GB];
+    H -- Sucesso --> I[Nokia/iPhone: Exibe mensagem de sucesso específica];
+    H -- Falha --> J[Smartphone: Exibe erro de memória insuficiente];
+    D -- Sair --> Z[Fim do Programa];
+    E --> C;
+    F --> C;
+    I --> C;
+    J --> C;
