@@ -4,12 +4,9 @@ namespace DesafioPOO.Models
     {
         public string Numero { get; set; }
         public string Modelo { get; set; }
-        
-        // A propriedade Memoria (o total) permanece em GB (para o usuário ver a especificação).
         public int Memoria { get; set; } 
         public string IMEI { get; set; }
         
-        // Campo privado que armazena a memória livre, mas agora será em Megabytes (MB)
         private int _memoriaLivreMB;
 
         public Smartphone(string numero, string modelo, string imei, int memoriaGB)
@@ -55,6 +52,20 @@ namespace DesafioPOO.Models
                 Console.WriteLine($"     Livre: {_memoriaLivreMB}MB ({memoriaLivreGB:F2}GB), Requerido: {tamanhoAppMB}MB.");
                 return false;
             }
+        }
+        
+        // NOVO MÉTODO: Exibe todos os detalhes do aparelho, incluindo a memória livre atualizada.
+        public void ExibirDetalhes()
+        {
+            double memoriaLivreGB = (double)_memoriaLivreMB / 1024;
+            Console.WriteLine("\n--- Detalhes do Aparelho ---");
+            Console.WriteLine($"  Marca: {GetType().Name}"); // Usa GetType().Name para mostrar se é Nokia ou Iphone
+            Console.WriteLine($"  Modelo: {Modelo}");
+            Console.WriteLine($"  Número: {Numero}");
+            Console.WriteLine($"  IMEI: {IMEI}");
+            Console.WriteLine($"  Memória Total: {Memoria}GB ({Memoria * 1024}MB)");
+            Console.WriteLine($"  Memória Livre: {_memoriaLivreMB}MB ({memoriaLivreGB:F2}GB)");
+            Console.WriteLine("----------------------------");
         }
     }
 }

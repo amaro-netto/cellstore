@@ -64,6 +64,7 @@ while (exibirMenu)
     Console.WriteLine("1 - Ligar");
     Console.WriteLine("2 - Receber Ligação");
     Console.WriteLine("3 - Instalar Aplicativo");
+    Console.WriteLine("4 - Ver Detalhes do Aparelho"); // Nova opção
     Console.Write("Ação: ");
 
     string escolhaAcao = Console.ReadLine();
@@ -79,7 +80,10 @@ while (exibirMenu)
         case "3":
             Console.Write("Digite o nome do aplicativo para instalar: ");
             string nomeApp = Console.ReadLine();
-            celularEscolhido.InstalarAplicativo(nomeApp); // Ação polimórfica!
+            celularEscolhido.InstalarAplicativo(nomeApp);
+            break;
+        case "4": // Novo case para exibir detalhes
+            celularEscolhido.ExibirDetalhes();
             break;
         default:
             Console.WriteLine("Ação inválida.");
