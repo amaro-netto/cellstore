@@ -1,8 +1,8 @@
-# DIO - Trilha .NET - Programação orientada a objetos
+# CELLSTORE
 
 Badges:
-- ![C#](https://img.shields.io/badge/C%23-5-9b248e?labelColor=512BD4&style=for-the-badge&logo=csharp&logoColor=white)
-- ![.NET: 9.0](https://img.shields.io/badge/.NET-9.0-9b248e?labelColor=512BD4&style=for-the-badge&logo=.net&logoColor=white)
+![C#](https://img.shields.io/badge/C%23--9b248e?labelColor=512BD4&style=for-the-badge&logo=csharp&logoColor=white)
+![.NET: 9.0](https://img.shields.io/badge/.NET-9.0-9b248e?labelColor=512BD4&style=for-the-badge&logo=.net&logoColor=white)
 
 ---
 
@@ -10,7 +10,7 @@ Badges:
 
 ### 📝 **Descrição do Projeto**
 
-[cite_start]Você é responsável por modelar um sistema que trabalha com celulares. [cite_start]Para isso, foi solicitado que você faça uma abstração de um celular e disponibilize maneiras de diferentes marcas e modelos terem seu próprio comportamento, possibilitando um maior reuso de código e usando a orientação a objetos.
+Você é responsável por modelar um sistema que trabalha com celulares. Para isso, foi solicitado que você faça uma abstração de um celular e disponibilize maneiras de diferentes marcas e modelos terem seu próprio comportamento, possibilitando um maior reuso de código e usando a orientação a objetos.
 
 #### ⚙️ **Tecnologias Utilizadas**
 * **C#** (Linguagem de Programação)
@@ -34,11 +34,11 @@ Badges:
 #### ** Fluxo de Funcionamento**
 ```mermaid
 graph TD
-    A[Início do Programa: Program.cs] --> B{Criar Instância do Nokia e do iPhone};
-    B --> C[Chamar métodos comuns: Ligar(), ReceberLigacao()];
-    C --> D{Chamar InstalarAplicativo()};
-    D --> E[Nokia: Sobrescreve e instala de um jeito];
-    D --> F[iPhone: Sobrescreve e instala de outro jeito];
+    A[Inicio do Programa] --> B{Criar Instancias};
+    B --> C[Metodos Comuns: Ligar, ReceberLigacao];
+    C --> D{Chamar InstalarAplicativo};
+    D --> E[Nokia: Override];
+    D --> F[iPhone: Override];
     E --> G[Fim];
     F --> G;
 ```
@@ -56,7 +56,7 @@ O programa cria objetos de diferentes tipos de celulares (Nokia e iPhone) a part
 ---
 
 ### 💻 **Como Usar a Aplicação**
-1.  Certifique-se de ter o **SDK do .NET 6.0** ou superior instalado.
+1.  Certifique-se de ter o **SDK do .NET 9.0** ou superior instalado.
 2.  Navegue até o diretório `DesafioPOO` no terminal.
 3.  Execute o comando para compilar e rodar o projeto:
     ```bash
