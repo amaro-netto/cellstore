@@ -2,7 +2,6 @@ namespace DesafioPOO.Models
 {
     public abstract class Smartphone
     {
-        // ... (código das propriedades e construtor permanece igual)
         public string Numero { get; set; }
         public string Modelo { get; set; }
         public int Memoria { get; set; } 
@@ -42,7 +41,7 @@ namespace DesafioPOO.Models
                 double memoriaRestanteGB = (double)_memoriaLivreMB / 1024;
 
                 Console.WriteLine($"  -> Memória utilizada: {tamanhoAppMB}MB.");
-                Console.WriteLine($"  -> Memória restante: {_memoriaLivreMB}MB ({memoriaRestanteGB:F2}GB).");
+                Console.WriteLine($"  -> Memória restante: {memoriaRestanteGB:F2}GB ({_memoriaLivreMB}MB)."); // Ordem invertida
                 return true;
             }
             else
@@ -50,7 +49,7 @@ namespace DesafioPOO.Models
                 // Mostramos a memória livre também em GB para o usuário ter uma ideia melhor.
                 double memoriaLivreGB = (double)_memoriaLivreMB / 1024;
                 Console.WriteLine($"  -> ERRO: Sem espaço suficiente para instalar!");
-                Console.WriteLine($"     Livre: {_memoriaLivreMB}MB ({memoriaLivreGB:F2}GB), Requerido: {tamanhoAppMB}MB.");
+                Console.WriteLine($"     Livre: {memoriaLivreGB:F2}GB ({_memoriaLivreMB}MB), Requerido: {tamanhoAppMB}MB."); // Ordem invertida
                 return false;
             }
         }
@@ -58,7 +57,7 @@ namespace DesafioPOO.Models
         public void ExibirDetalhes()
         {
             double memoriaLivreGB = (double)_memoriaLivreMB / 1024;
-            // Cálculo da memória usada para mostrar de forma direta
+            // Cálculo da memória usada
             int memoriaUsadaMB = (Memoria * 1024) - _memoriaLivreMB;
             double memoriaUsadaGB = (double)memoriaUsadaMB / 1024;
 
@@ -68,8 +67,10 @@ namespace DesafioPOO.Models
             Console.WriteLine($"  Número: {Numero}");
             Console.WriteLine($"  IMEI: {IMEI}");
             Console.WriteLine($"  Memória Total: {Memoria}GB ({Memoria * 1024}MB)");
-            Console.WriteLine($"  Memória Usada: {memoriaUsadaMB}MB ({memoriaUsadaGB:F2}GB)"); // Novo campo
-            Console.WriteLine($"  Memória Livre: {_memoriaLivreMB}MB ({memoriaLivreGB:F2}GB)");
+            // NOVO FORMATO: GB (MB)
+            Console.WriteLine($"  Memória Usada: {memoriaUsadaGB:F2}GB ({memoriaUsadaMB}MB)");
+            // NOVO FORMATO: GB (MB)
+            Console.WriteLine($"  Memória Livre: {memoriaLivreGB:F2}GB ({_memoriaLivreMB}MB)");
             Console.WriteLine("----------------------------");
         }
     }
