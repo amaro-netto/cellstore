@@ -1,12 +1,10 @@
 # CELLSTORE
 
-## Badges:
+### Badges:
 
-![C#](https://img.shields.io/badge/C%23--9b248e?labelColor=512BD4&style=for-the-badge&logo=csharp&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-9b248e?labelColor=512BD4&style=for-the-badge&logo=csharp&logoColor=white)
 ![.NET: 9.0](https://img.shields.io/badge/.NET-9.0-9b248e?labelColor=512BD4&style=for-the-badge&logo=.net&logoColor=white)
 ![Status: Concluído](https://img.shields.io/badge/Status-Concluído-success?style=for-the-badge)
-
-##
 
 ### **Índice**
 
