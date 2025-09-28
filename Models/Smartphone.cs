@@ -2,6 +2,7 @@ namespace DesafioPOO.Models
 {
     public abstract class Smartphone
     {
+        // ... (código das propriedades e construtor permanece igual)
         public string Numero { get; set; }
         public string Modelo { get; set; }
         public int Memoria { get; set; } 
@@ -54,16 +55,20 @@ namespace DesafioPOO.Models
             }
         }
         
-        // NOVO MÉTODO: Exibe todos os detalhes do aparelho, incluindo a memória livre atualizada.
         public void ExibirDetalhes()
         {
             double memoriaLivreGB = (double)_memoriaLivreMB / 1024;
+            // Cálculo da memória usada para mostrar de forma direta
+            int memoriaUsadaMB = (Memoria * 1024) - _memoriaLivreMB;
+            double memoriaUsadaGB = (double)memoriaUsadaMB / 1024;
+
             Console.WriteLine("\n--- Detalhes do Aparelho ---");
-            Console.WriteLine($"  Marca: {GetType().Name}"); // Usa GetType().Name para mostrar se é Nokia ou Iphone
+            Console.WriteLine($"  Marca: {GetType().Name}");
             Console.WriteLine($"  Modelo: {Modelo}");
             Console.WriteLine($"  Número: {Numero}");
             Console.WriteLine($"  IMEI: {IMEI}");
             Console.WriteLine($"  Memória Total: {Memoria}GB ({Memoria * 1024}MB)");
+            Console.WriteLine($"  Memória Usada: {memoriaUsadaMB}MB ({memoriaUsadaGB:F2}GB)"); // Novo campo
             Console.WriteLine($"  Memória Livre: {_memoriaLivreMB}MB ({memoriaLivreGB:F2}GB)");
             Console.WriteLine("----------------------------");
         }
